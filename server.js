@@ -34,13 +34,16 @@ app.get("/api/timestamp/", function (req, res) {
 // API endpoing for other time requests
 app.get("/api/timestamp/:time", function (req, res) {
   
-  var time = req.params.time;
+  var time = new Date(req.params.time);
+  var unixDate = time.getTime();
   
-  date.getTime()
 
-  res.send( time.getTime()
-    new Date(time).toUTCString());
-
+  
+  res.json({
+    "unix": time.getTime(),
+    "utc": time
+  })
+  
 });
 
 
