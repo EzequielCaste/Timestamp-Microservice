@@ -43,12 +43,12 @@ app.get("/api/timestamp/:time", function (req, res) {
   var originalTime = new Date(req.params.time);
   var unixDate = originalTime.getTime();
   
-  console.log(Date.parse(req.params.time))
+  if(!Date.parse(req.params.time)){
+    console.log("in")
+    
+  }
 
-  res.json({
-    "unix": originalTime.getTime(),
-    "utc": originalTime.toUTCString()
-  })
+  
   
 });
 
