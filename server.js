@@ -27,21 +27,27 @@ app.get("/api/hello", function (req, res) {
 // API endpoint for empty request
 app.get("/api/timestamp/", function (req, res) {
   
-  res.send(new Date().toUTCString());
+  var time = new Date()
+  
+  res.json({
+    "unix": time,
+    "utc": time.toUTCString()
+  })
+  
   
 });
 
 // API endpoing for other time requests
 app.get("/api/timestamp/:time", function (req, res) {
   
-  var time = new Date(req.params.time);
-  var unixDate = time.getTime();
+  var originalTime = new Date(req.params.time);
+  var unixDate = originalTime.getTime();
   
+  console.log(Date.parse(req.params.time))
 
-  
   res.json({
-    "unix": time.getTime(),
-    "utc": time
+    "unix": originalTime.getTime(),
+    "utc": originalTime.toUTCString()
   })
   
 });
