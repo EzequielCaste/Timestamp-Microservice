@@ -24,12 +24,23 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+// API endpoint for empty request
+app.get("/api/timestamp/", function (req, res) {
+  
+  res.send(new Date().toUTCString());
+  
+});
+
+// API endpoing for other time requests
 app.get("/api/timestamp/:time", function (req, res) {
   
   var time = req.params.time;
   
-  
-  res.send(new Date(time).toUTCString());
+  date.getTime()
+
+  res.send( time.getTime()
+    new Date(time).toUTCString());
+
 });
 
 
