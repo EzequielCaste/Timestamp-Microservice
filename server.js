@@ -40,21 +40,27 @@ app.get("/api/timestamp/", function (req, res) {
 // API endpoing for other time requests
 app.get("/api/timestamp/:time", function (req, res) {
   
-    
-  var originalTime = new Date(req.params.time);
-  var unixDate = originalTime.getTime();
-  
   if(!Date.parse(req.params.time)){
+    res.json({
+        "unix": null,
+        "utc": "Invalid Date"
+      })
+  } else {
+    var originalTime = new Date(req.params.time);
+    var unixDate = originalTime.getTime();
+    
     res.json({
       "unix": req.params.time,
       "utc": new Date(Number(req.params.time))
     })    
-  } else {
-      res.json({
-        "unix": unixDate,
-        "utc": originalTime.toUTCString()
-      })
+      
+    
   }
+  
+  
+    
+      
+  
 
   
   
