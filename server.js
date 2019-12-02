@@ -30,7 +30,7 @@ app.get("/api/timestamp/", function (req, res) {
   var time = new Date()
   
   res.json({
-    "unix": time,
+    "unix": time.getTime(),
     "utc": time.toUTCString()
   })
   
@@ -40,12 +40,22 @@ app.get("/api/timestamp/", function (req, res) {
 // API endpoing for other time requests
 app.get("/api/timestamp/:time", function (req, res) {
   
+  console.log(req.params.time)
+  
   var originalTime = new Date(req.params.time);
   var unixDate = originalTime.getTime();
   
   if(!Date.parse(req.params.time)){
-    console.log("in")
+    res.json({
+      "unix": unixDate,
+      "utc": originalTime.toUTCString()
+    })
     
+  } else {
+      res.json({
+        "unix": unixDate,
+        "utc": originalTime.toUTCString()
+      })
   }
 
   
