@@ -1,4 +1,4 @@
-https://plastic-tamarind.glitch.me/
+Example: https://plastic-tamarind.glitch.me/api/timestamp/2015-12-25
 
 # API Project: Timestamp Microservice for FCC
 
